@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpn56ahbw385k"]
+
+[ext_resource type="Texture2D" uid="uid://chrdbqa8noup2" path="res://assets/img/backwall.png" id="1_j8ivh"]
+[ext_resource type="PackedScene" uid="uid://4llooyp2638m" path="res://scenes/eyeball.tscn" id="2_7ddre"]
+[ext_resource type="Texture2D" uid="uid://crf7umrvm2upo" path="res://assets/img/overlay.png" id="2_nd71p"]
+[ext_resource type="PackedScene" uid="uid://blwjndffwixjc" path="res://scenes/player.tscn" id="4_7ddre"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Backwall" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_j8ivh")
+centered = false
+
+[node name="Eyeball" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_7ddre")]
+position = Vector2(450, 250)
+scale = Vector2(3, 3)
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_7ddre")]
+position = Vector2(213, 305)
+scale = Vector2(3, 3)
+
+[node name="Overlay" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_nd71p")
+centered = false

@@ -2,7 +2,7 @@ class_name PlayerState
 
 var player: Player;
 
-func _init(player):
+func _init(player: Player):
 	self.player = player;
 
 func get_next_state() -> PlayerState:

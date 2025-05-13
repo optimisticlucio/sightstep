@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 var state: PlayerState;
+@onready var audio_stream: AudioStreamPlayer2D = $AudioStreamPlayer
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready():
 	state = InitialState.new(self);

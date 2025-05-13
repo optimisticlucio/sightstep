@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://4llooyp2638m"]
+
+[ext_resource type="Texture2D" uid="uid://col443upevigm" path="res://assets/img/eyeball.png" id="1_mn6nm"]
+[ext_resource type="Script" uid="uid://qs70nlhto66n" path="res://scripts/eyeball.gd" id="1_ps2qp"]
+[ext_resource type="Texture2D" uid="uid://cslujlusf7vpp" path="res://assets/img/pupil.png" id="2_ps2qp"]
+
+[node name="Eyeball" type="Node2D"]
+script = ExtResource("1_ps2qp")
+
+[node name="Eyeball" type="Sprite2D" parent="."]
+texture = ExtResource("1_mn6nm")
+
+[node name="Pupil" type="Sprite2D" parent="."]
+texture = ExtResource("2_ps2qp")
