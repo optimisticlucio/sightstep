@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhiqw3h85hlb0"]
+
+[ext_resource type="Script" uid="uid://cqg07x8bts80s" path="res://scripts/audio_handler.gd" id="1_7fwcy"]
+[ext_resource type="AudioStream" uid="uid://ddluak1lhir18" path="res://assets/sfx/air_extractor_fan.wav" id="1_m0grf"]
+[ext_resource type="AudioStream" uid="uid://gy6ch0lns5cr" path="res://assets/sfx/flourescent_light.wav" id="2_7fwcy"]
+
+[sub_resource type="Animation" id="Animation_7fwcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AirExtractorFan:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-30.0]
+}
+
+[sub_resource type="Animation" id="Animation_m0grf"]
+resource_name = "light_flicker"
+length = 10.0
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightHandler/light_noise")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_7fwcy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.471343, 0.657972, 0.756688, 0.790179, 0.954837, 1.01141, 1.14134, 1.35219, 1.45052, 1.6261, 1.95359, 7.28751),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}, {
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}, {
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}, {
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}, {
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}, {
+"args": [],
+"method": &"lights_on"
+}, {
+"args": [],
+"method": &"lights_off"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AirExtractorFan:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.28798, 7.29186),
+"transitions": PackedFloat32Array(1.56917, 1),
+"update": 0,
+"values": [-40.0, -35.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wtsjf"]
+_data = {
+&"RESET": SubResource("Animation_7fwcy"),
+&"light_flicker": SubResource("Animation_m0grf")
+}
+
+[node name="audio_handler" type="Node2D"]
+script = ExtResource("1_7fwcy")
+
+[node name="AirExtractorFan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_m0grf")
+volume_db = -30.0
+autoplay = true
+
+[node name="LightHandler" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wtsjf")
+}
+
+[node name="light_noise" type="AudioStreamPlayer" parent="LightHandler"]
+volume_db = -4.0

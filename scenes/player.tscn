@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://blwjndffwixjc"]
+[gd_scene load_steps=11 format=3 uid="uid://blwjndffwixjc"]
 
 [ext_resource type="Texture2D" uid="uid://cbjtrm18y5j84" path="res://assets/img/character_spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dh0ii4q4qr5jf" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://bacjhy7c5p8mj" path="res://assets/sfx/steps.ogg" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("1_3vyb7")
@@ -11,9 +12,17 @@ region = Rect2(72, 0, 24, 42)
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 0, 24, 42)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 42, 24, 42)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(24, 0, 24, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(48, 0, 24, 42)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
 animations = [{
@@ -35,6 +44,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"hop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g2els")
 }],
 "loop": true,
@@ -48,6 +65,14 @@ animations = [{
 "loop": true,
 "name": &"look_up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
@@ -59,10 +84,11 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qhqgy")
-animation = &"idle"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qhqgy")

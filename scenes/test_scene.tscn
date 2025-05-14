@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpn56ahbw385k"]
+[gd_scene load_steps=8 format=3 uid="uid://cpn56ahbw385k"]
 
+[ext_resource type="PackedScene" uid="uid://5m7i5gv57be" path="res://scenes/game_manager.tscn" id="1_3qnke"]
 [ext_resource type="Texture2D" uid="uid://chrdbqa8noup2" path="res://assets/img/backwall.png" id="1_j8ivh"]
 [ext_resource type="PackedScene" uid="uid://4llooyp2638m" path="res://scenes/eyeball.tscn" id="2_7ddre"]
 [ext_resource type="Texture2D" uid="uid://crf7umrvm2upo" path="res://assets/img/overlay.png" id="2_nd71p"]
 [ext_resource type="PackedScene" uid="uid://blwjndffwixjc" path="res://scenes/player.tscn" id="4_7ddre"]
+[ext_resource type="PackedScene" uid="uid://dhiqw3h85hlb0" path="res://scenes/audio_handler.tscn" id="5_qjeyg"]
+[ext_resource type="PackedScene" uid="uid://dajby8g5mfyii" path="res://scenes/single_floor.tscn" id="6_wtsjf"]
 
 [node name="TestScene" type="Node2D"]
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("lights_handler", "player", "evil_thing", "blackout_rect") instance=ExtResource("1_3qnke")]
+lights_handler = NodePath("../AudioHandler")
+player = NodePath("../Player")
+evil_thing = NodePath("../Eyeball")
+blackout_rect = NodePath("../BlackoutRect")
 
 [node name="Backwall" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -18,10 +27,27 @@ scale = Vector2(3, 3)
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_7ddre")]
-position = Vector2(213, 305)
+position = Vector2(120, 377)
 scale = Vector2(3, 3)
 
 [node name="Overlay" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_nd71p")
 centered = false
+
+[node name="SingleFloor2" parent="." instance=ExtResource("6_wtsjf")]
+position = Vector2(469, 602)
+scale = Vector2(3, 3)
+
+[node name="SingleFloor" parent="." instance=ExtResource("6_wtsjf")]
+position = Vector2(154, 533)
+scale = Vector2(3, 3)
+
+[node name="AudioHandler" parent="." instance=ExtResource("5_qjeyg")]
+
+[node name="BlackoutRect" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 904.0
+offset_bottom = 753.0
+color = Color(0, 0, 0, 0.960784)

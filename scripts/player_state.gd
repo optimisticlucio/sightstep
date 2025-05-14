@@ -8,7 +8,7 @@ func _init(player: Player):
 func get_next_state() -> PlayerState:
 	return self;
 
-func act_state():
+func act_state(delta):
 	pass
 
 func enter_state():
