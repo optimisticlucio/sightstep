@@ -32,4 +32,8 @@ func turn_lights_on() -> void:
 	
 	# Now set the time_to_lights something reasonable.
 	time_to_lights = lights_handler.animation_handler.current_animation_length
-	time_to_lights += randf_range(5, 10)
+	time_to_lights += 5 + randf_range(0, 3)
+
+# Run when the creature spots the player to start the lose condition.
+func it_saw_you() -> void:
+	pass

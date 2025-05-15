@@ -3,9 +3,11 @@ extends Node2D
 
 @export var player: Player;
 @onready var pupil = $Pupil;
+var eye_wiggle_percentage: float = 0; # A percentage from 0 to 1 of how much the demon eye should wiggle.
+#TODO: involve eye wiggle
 
 func _ready() -> void:
-	align_eyeball(); # FOR TESTING!
+	align_eyeball();
 
 # Aligns the eyeball to look at the player's current location.
 func align_eyeball():
