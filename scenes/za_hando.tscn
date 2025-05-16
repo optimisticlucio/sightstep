@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3kota6mhjf3t"]
+
+[ext_resource type="Script" uid="uid://b63rvypoaejaj" path="res://scripts/za_hando.gd" id="1_h4hs3"]
+[ext_resource type="Texture2D" uid="uid://by6cbtojkri0g" path="res://assets/img/the-hand.png" id="2_2f1md"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4hs3"]
+radius = 5.0
+
+[node name="ZaHando" type="Node2D"]
+script = ExtResource("1_h4hs3")
+
+[node name="The-hand" type="Sprite2D" parent="."]
+position = Vector2(-40, -19)
+texture = ExtResource("2_2f1md")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_h4hs3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

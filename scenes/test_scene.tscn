@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpn56ahbw385k"]
+[gd_scene load_steps=9 format=3 uid="uid://cpn56ahbw385k"]
 
 [ext_resource type="PackedScene" uid="uid://5m7i5gv57be" path="res://scenes/game_manager.tscn" id="1_3qnke"]
 [ext_resource type="Texture2D" uid="uid://chrdbqa8noup2" path="res://assets/img/backwall.png" id="1_j8ivh"]
@@ -7,14 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://blwjndffwixjc" path="res://scenes/player.tscn" id="4_7ddre"]
 [ext_resource type="PackedScene" uid="uid://dhiqw3h85hlb0" path="res://scenes/audio_handler.tscn" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://dajby8g5mfyii" path="res://scenes/single_floor.tscn" id="6_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://cq7vuqqrlxsie" path="res://scenes/exit_door.tscn" id="8_rnaij"]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("lights_handler", "player", "evil_thing", "blackout_rect") instance=ExtResource("1_3qnke")]
-lights_handler = NodePath("../AudioHandler")
+[node name="GameManager" parent="." node_paths=PackedStringArray("lights_handler", "player", "evil_thing", "blackout_rect", "exit_door") instance=ExtResource("1_3qnke")]
+lights_handler = NodePath("../LightHandler")
 player = NodePath("../Player")
 evil_thing = NodePath("../Eyeball")
 blackout_rect = NodePath("../BlackoutRect")
+exit_door = NodePath("../ExitDoor")
 
 [node name="Backwall" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -27,27 +29,45 @@ scale = Vector2(3, 3)
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("4_7ddre")]
-position = Vector2(120, 377)
+position = Vector2(123, 370)
+scale = Vector2(2, 2)
+
+[node name="ExitDoor" parent="." instance=ExtResource("8_rnaij")]
+position = Vector2(782, 339)
 scale = Vector2(3, 3)
 
 [node name="Overlay" type="Sprite2D" parent="."]
+z_index = 10
 scale = Vector2(3, 3)
 texture = ExtResource("2_nd71p")
 centered = false
 
 [node name="SingleFloor2" parent="." instance=ExtResource("6_wtsjf")]
-position = Vector2(469, 602)
+position = Vector2(782, 411)
 scale = Vector2(3, 3)
 
 [node name="SingleFloor" parent="." instance=ExtResource("6_wtsjf")]
-position = Vector2(154, 533)
+position = Vector2(72, 646)
 scale = Vector2(3, 3)
 
-[node name="AudioHandler" parent="." instance=ExtResource("5_qjeyg")]
+[node name="SingleFloor3" parent="." instance=ExtResource("6_wtsjf")]
+position = Vector2(310, 451)
+scale = Vector2(3, 3)
+
+[node name="SingleFloor5" parent="." instance=ExtResource("6_wtsjf")]
+position = Vector2(363, 617)
+scale = Vector2(3, 3)
+
+[node name="SingleFloor6" parent="." instance=ExtResource("6_wtsjf")]
+position = Vector2(677, 552)
+scale = Vector2(3, 3)
+
+[node name="LightHandler" parent="." instance=ExtResource("5_qjeyg")]
 
 [node name="BlackoutRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -5.0
 offset_top = -6.0
 offset_right = 904.0
 offset_bottom = 753.0
-color = Color(0, 0, 0, 0.960784)
+color = Color(0, 0, 0, 1)

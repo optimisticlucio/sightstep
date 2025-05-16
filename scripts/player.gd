@@ -20,7 +20,8 @@ func state_tick(delta):
 	if (next_state != state):
 		state.exit_state();
 		next_state.enter_state();
-		if (typeof(next_state) != typeof(InitialState)):
+		print(next_state.get_script().get_global_name())
+		if (next_state.get_script().get_global_name() != "InitialState"):
 			initiated_movement.emit();
 		state = next_state;
 	

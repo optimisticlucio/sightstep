@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq7vuqqrlxsie"]
+
+[ext_resource type="Script" uid="uid://pqgjtrmylgvx" path="res://scripts/exit_door.gd" id="1_lxrmt"]
+[ext_resource type="Texture2D" uid="uid://clijfsne5tks" path="res://assets/img/door.png" id="1_yk4m6"]
+[ext_resource type="Texture2D" uid="uid://b0rye02glym2q" path="res://assets/img/door-light.png" id="2_lxrmt"]
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_lxrmt")
+
+[node name="Door-light" type="Sprite2D" parent="."]
+visibility_layer = 2
+z_index = 100
+texture = ExtResource("2_lxrmt")
+
+[node name="Door" type="Sprite2D" parent="."]
+texture = ExtResource("1_yk4m6")
